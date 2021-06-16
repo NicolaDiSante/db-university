@@ -48,6 +48,13 @@
 
 
 7. 
+	SELECT `students`.`id`, `students`.`name`, `students`.`surname`,`courses`.`name`,
+	`courses`.`id`, COUNT(`exam_student`.`vote`)
+	FROM `students`
+	JOIN `exam_student` ON `exam_student`.`student_id` = `students`.`id`
+	JOIN `exams` ON `exam_student`.`exam_id` = `exams`.`id`
+	JOIN `courses` ON `exam`.`course_id` = `courses`.`id`
+	GROUP BY `students`.`id`, 'courses'.`id`;
 
 
 8. 

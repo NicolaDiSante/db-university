@@ -6,20 +6,18 @@
 
 2.
 
-	SELECT `office_address`, COUNT(*) AS `num_teachers` 
+	SELECT COUNT(*) AS `num_teachers`, `office_address`
 	FROM `teachers`	 
 	GROUP BY `office_address`;
 
 3. 
 
-	SELECT `exams`.`date`, AVG(`vote`) 
+	SELECT  AVG(`vote`), `exam_id`
 	FROM `exam_student`
-	JOIN `exams` ON `exam_student`.`exam_id` = `exams`.`id`
-	GROUP BY `exams`.`date`;
+	GROUP BY `exam_id`;
 
 4. 
 
-	SELECT `departments`.`name`, COUNT(`degrees`.`id`) AS `num_degrees`
-	FROM `departments`
-	JOIN `degrees` ON `degrees`.`department_id` = `departments`.`id`
-	GROUP BY `departments`.`name`;
+	SELECT COUNT(*) AS `num_degrees`, `departments_id`, 
+	FROM `degrees`
+	GROUP BY `department_id`;

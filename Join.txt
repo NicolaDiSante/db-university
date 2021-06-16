@@ -1,35 +1,35 @@
 1. 
-	SELECT * 
+	SELECT `students`.* 
 	FROM `students`
 	JOIN `degrees` ON `degrees`.`id` = `students`.`degree_id`
 	WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 
 
 2. 
-	SELECT * 
-	FROM `departments` 
-	JOIN `degrees` ON `degrees`.`department_id` = `departments`.`id`
+	SELECT `degrees`.* 
+	FROM `degrees` 
+	JOIN `departments` ON `department_id` = `degrees`.`department_id`
 	WHERE `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 
 3. 
-	SELECT * 
+	SELECT `courses`.* 
 	FROM `courses` 
 	JOIN `course_teacher` ON `course_teacher`.`course_id` = `courses`.`id`
-	JOIN`teachers` ON `teachers`.`id` = `course_teacher`.`teacher_id`
+	JOIN `teachers` ON `teachers`.`id` = `course_teacher`.`teacher_id`
 	WHERE `teachers`.`id` = 44;
 
 
 4. 
 	SELECT `students`.`surname`, `students`.`name`, `degrees`.`name` AS `degree_name`, `departments`.`name` AS `department_name`
 	FROM `students` 
-	JOIN `degrees` ON `degrees`.id = `students`.`degree_id` 
+	JOIN `degrees` ON `degrees`.`id` = `students`.`degree_id` 
 	JOIN `departments` ON `departments`.`id` = `degrees`.`department_id` 
-	ORDER BY `students`.`surname`;
+	ORDER BY `students`.`surname`, `students`.`name`;
 
 
 5. 
-	SELECT `degrees`.`name` AS `degree_name`, `courses`.`name` AS `course_name`, `teachers`.`name` AS `teacher_name`, `teachers`.`surname` AS `teacher_surname`
+	SELECT `degrees`.`name`, `courses`.`name` , `courses`.`cfu`, `teachers`.`name`, `teachers`.`surname`
 	FROM `degrees`
 	JOIN `courses` ON `courses`.`degree_id` = `degrees`.`id`
 	JOIN `course_teacher` ON `course_teacher`.`course_id` = `courses`.`id`

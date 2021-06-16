@@ -48,18 +48,6 @@
 
 
 7. 
-	SELECT `students`.`name`, `students`.`surname`, `courses`.`name` AS `course_name`, COUNT(`exam_student`.`vote`) AS `num_attempts`
-	FROM `students`
-	JOIN `exam_student` ON `exam_student`.`student_id` = `students`.`id`
-	JOIN `exams` ON `exams`.`id` = `exam_student`.`exam_id`
-	JOIN `courses` ON `courses`.`id` = `exams`.`course_id`
-	GROUP BY `students`.`id`, `courses`.`id`
+
 
 8. 
-	SELECT `students`.`name`, `students`.`surname`, `courses`.`name` AS `course_name`, `exam_student`.`vote`
-	FROM `students`
-	JOIN `exam_student` ON `exam_student`.`student_id` = `students`.`id`
-	JOIN `exams` ON `exams`.`id` = `exam_student`.`exam_id`
-	JOIN `courses` ON `courses`.`id` = `exams`.`course_id`
-	WHERE `students`.`registration_number` = 624567
-	AND `exam_student`.`vote` < 18;
